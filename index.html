@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="author" content="Elvis Pfützenreuter">
+<title>Biorhythm calculator</title>
+<script type='text/javascript' src='io.js' defer></script>
+<link rel="stylesheet" type="text/css" href="bio.css">
+</head>
+
+<body>
+
+<script type="text/javascript" src="flot/jquery.flot.js" defer></script>
+<script type="text/javascript" src="bio.js" defer></script>
+
+Date of birth: 
+<select name="byear" id="byear"><option value="0">--</option></select>
+<select name="bmonth" id="bmonth"><option value="0">--</option></select>
+<select name="bday" id="bday"><option value="0">--</option></select>
+ hour: 
+<select name="bhour" id="bhour"><option value="0">--</option></select>
+<br>
+
+<div id="labels" style="width: 100%; max-width: 800px; text-align: right">
+<span style="color: #080">Physical</span>
+<span style="color: #F00">Emotional</span>
+<span style="color: #00F">Intellectual</span>
+<span style="color: #F80">Total</span>
+</div>
+<div id="graph" style="width: 100%; max-width: 800px;"></div>
+
+<br>
+Chart span:
+<select name="bspan" id="bspan"><option value="0">--</option></select>
+</body></html>
