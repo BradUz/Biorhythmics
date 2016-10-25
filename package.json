@@ -1,25 +1,23 @@
 {
-  "name": "electron-quick-start",
+  "name": "Biorhythmics",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A biorhythm application with daily notifications",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Biorhythmics",
+    "biorhythm"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "Elvis Pfutzenreuter",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "electron-packager": "^8.1.0"
   },
   "dependencies": {
-    "electron-json-storage": "^2.0.1"
+    "electron-json-storage": "^2.0.1",
+    "electron-notify": "^0.1.0"
   }
 }

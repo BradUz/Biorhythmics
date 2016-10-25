@@ -1,0 +1,3 @@
+#/bin/bash/
+
+electron-packager . Biorhythmics --icon=icon.icns --prune --overwrite

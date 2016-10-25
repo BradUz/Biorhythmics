@@ -370,4 +370,3 @@ update = function()
  * Copyright (c) 2010 Elvis Pfutzenreuter
  * All rights reserved.
  */
-
