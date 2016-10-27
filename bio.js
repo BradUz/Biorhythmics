@@ -13,6 +13,12 @@ var s_basedate = null;
 var basedate;
 
 var storage = require("electron-json-storage");
+var ipcRenderer = require('electron').ipcRenderer;
+
+function mylog(txt)
+{
+	ipcRenderer.send('mylog', txt);
+}
 
 // http://stackoverflow.com/questions/439463/how-to-get-get-and-post-variables-with-jquery
 function getQueryParams(qs) {
@@ -36,9 +42,9 @@ function generate_data(birth, span)
 	var days = basedate.getTime() - birth.getTime();
 	days /= 1000;
 	days /= 86400;
-	console.log("Birth: " + birth);
-	console.log("Base date: " + basedate);
-	console.log("Number of days: " + days);
+	mylog("Birth: " + birth);
+	mylog("Base date: " + basedate);
+	mylog("Number of days: " + days);
 
 	var graph_data = [];
 	var lines = [];
@@ -172,7 +178,7 @@ read_storage = function(engine)
 		data = contents["blist"];
 
 		if (data.length < storage_list.length) {
-			console.log("data length " + data.length);
+			mylog("data length " + data.length);
 			update();
 			return;
 		}
@@ -200,7 +206,7 @@ write_storage = function()
 
 	storage.set("bio1", {"blist": data}, function (error) {
 		if (error) {
-			console.log("Error setting data " + error);
+			mylog("Error setting data " + error);
 		}
 	});
 };

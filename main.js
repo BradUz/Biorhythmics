@@ -1,6 +1,13 @@
 const {app, Menu, Tray, BrowserWindow} = require('electron');
 const path = require('path');
-app.setPath("userData", path.join(app.getPath('home'), '.Biorhytmics'));
+const fs = require('fs');
+const ipcMain = require('electron').ipcMain;
+
+let app_folder = path.join(app.getPath('home'), '.Biorhytmics');
+app.setPath("userData", app_folder);
+
+let log_file = path.join(app_folder, 'console.log');
+let log = fs.openSync(log_file, 'a');
 
 var mainWindow = null;
 
@@ -19,11 +26,24 @@ var notify;
 
 let tray, ContextMenu;
 
+function mylog(txt)
+{
+	fs.writeSync(log, "" + (new Date()) + " " + txt + "\n");
+}
+
+ipcMain.on('mylog', function(event, arg) {
+	mylog("(R) " + arg);
+});
+
 function createWindow () {
-	mainWindow = new BrowserWindow({width: 800, height: 620,
-			'min-width': 800, 'min-height': 620,
+	mainWindow = new BrowserWindow({
+			width: 800,
+			'min-width': 800,
+			height: 620,
+			'min-height': 620,
 			'accept-first-mouse': true,
-			title: "Biorhythmics", icon:'./icon-256.png'});
+			title: "Biorhythmics",
+			icon:'./icon-256.png'});
 
 	mainWindow.on('minimize', function(event) {
 		event.preventDefault();
@@ -99,18 +119,18 @@ function determine_bio()
 		}
 		var data = contents["blist"];
 		if (data.length < 4) {
-			console.log("bg: data length " + data.length);
+			mylog("bg: data length " + data.length);
 			return;
 		}
 	
-		console.log("bg data: " + data);
+		mylog("bg data: " + data);
 		var birth = new Date(data[0], data[1] - 1, data[2], data[3], 0, 0, 0);
 
 		var now = new Date();
 		var tomorrow = new Date(now.getTime() + 24*60*60*1000);
 
-		console.log("now: " + now);
-		console.log("tomorrow: " + tomorrow);
+		mylog("now: " + now);
+		mylog("tomorrow: " + tomorrow);
 
 		determine_bio_in(birth, now);
 	});
@@ -129,9 +149,9 @@ function determine_bio_in(birth, now)
 	days /= 1000;
 	days /= 86400;
 
-	console.log("Base: " + now);
-	console.log("Birth: " + birth);
-	console.log("Number of days: " + days);
+	mylog("Base: " + now);
+	mylog("Birth: " + birth);
+	mylog("Number of days: " + days);
 		
 	for (var i = 0; i < 3; ++i) {
 		var h = Math.sin(2.0 * Math.PI * days / periods[i]);
@@ -153,7 +173,7 @@ function determine_bio_in(birth, now)
 		h = Math.cos(2.0 * Math.PI * (days + 1) / periods[i]);
 		dd1b[i] = h;
 
-		console.log("item " + i + " x-1: " + dm1b[i] + " x: " + d0b[i] + " x+1: " + d1b[i] + " derivatives " + dd0b[i] + " " + dd1b[i]);
+		mylog("item " + i + " x-1: " + dm1b[i] + " x: " + d0b[i] + " x+1: " + d1b[i] + " derivatives " + dd0b[i] + " " + dd1b[i]);
 	}
 
 	var msgs = [];
@@ -241,7 +261,7 @@ function determine_bio_in(birth, now)
 	}
 
 	if (msgs.length <= 0) {
-		console.log("No events in biorhythm");
+		mylog("No events in biorhythm");
 		return;
 	}
 
@@ -251,7 +271,7 @@ function determine_bio_in(birth, now)
 	}
 
 	msgs.sort(function (a, b) { return a[0] - b[0] });
-	console.log(msgs);
+	mylog(msgs);
 
 	notif(msgs[0][1], msgs[1][1]);
 }
