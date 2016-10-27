@@ -1,14 +1,23 @@
 const {app, Menu, Tray, BrowserWindow} = require('electron');
 const path = require('path');
 app.setPath("userData", path.join(app.getPath('home'), '.Biorhytmics'));
-if (app.makeSingleInstance(function () {})) {
+
+var mainWindow = null;
+
+var first_instance_on_reload = function () {
+	if (mainWindow) {
+		mainWindow.show();
+	}
+}
+
+if (app.makeSingleInstance(first_instance_on_reload)) {
 	app.quit();
 }
 
 var storage = require("electron-json-storage");
 var notify;
 
-let mainWindow, tray, ContextMenu;
+let tray, ContextMenu;
 
 function createWindow () {
 	mainWindow = new BrowserWindow({width: 800, height: 620,
