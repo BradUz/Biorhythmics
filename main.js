@@ -110,6 +110,7 @@ app.on('activate', function () {
 
 var periods = [23, 28, 33, 0];
 var labels = ["Physical", "Emotional", "Intellectual", "Total"];
+var last_notif = new Date();
 
 function determine_bio()
 {
@@ -118,10 +119,28 @@ function determine_bio()
 			contents = {"blist": []};
 		}
 		var data = contents["blist"];
-		if (data.length < 4) {
+		if (data.length < 6) {
 			mylog("bg: data length " + data.length);
 			return;
 		}
+		if (data[5] < 0 || data[5] > 23) {
+			mylog("bg: notifications turned off");
+			return;
+		}
+
+		var now = new Date();
+		var notif_time = new Date(now.getFullYear(), now.getMonth(), now.getDate(), data[5], 0, 0, 0);
+		if (notif_time < last_notif) {
+			notif_time.setTime(notif_time.getTime() + 86400 * 1000);
+		}
+
+		mylog("bg: next notif is at " + notif_time);
+
+		if (notif_time > now) {
+			return;
+		}
+		
+		last_notif = now;
 	
 		mylog("bg data: " + data);
 		var birth = new Date(data[0], data[1] - 1, data[2], data[3], 0, 0, 0);
@@ -318,6 +337,5 @@ function scheduleNotifs() {
 		width: 350,
 		height: 80,
 	});
-	setTimeout(determine_bio, 3 * 60000);
-	setInterval(determine_bio, 12 * 60 * 60000);
+	setInterval(determine_bio, 60000);
 }

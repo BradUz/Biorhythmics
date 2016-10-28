@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-var storage_list = ['#byear', '#bmonth', '#bday', '#bhour', '#bspan'];
+var storage_list = ['#byear', '#bmonth', '#bday', '#bhour', '#bspan', '#bnotif'];
 var colors = ["#008000", "#FF0000", "#0000ff", "#ff8000"];
 var periods = [23, 28, 33, 0];
 var labels = ["Physical", "Emotional", "Intellectual", "Total"];
@@ -34,8 +34,6 @@ function getQueryParams(qs) {
 
     return params;
 }
-
-var GET = getQueryParams(document.location.search);
 
 function generate_data(birth, span)
 {
@@ -141,6 +139,7 @@ basedate_now = function ()
 	update();
 }
 
+/*
 update_urls = function()
 {
 	var url = "https://epxx.co/ctb/bio.html?";
@@ -168,6 +167,7 @@ update_urls = function()
 
 	$('#basedate').html(sdate);
 }
+*/
 
 read_storage = function(engine)
 {
@@ -267,6 +267,13 @@ function populate_controls()
         o.options[i++] = new Option("Four weeks (two previous, two next)", 15);
         o.options[i++] = new Option("Six weeks (three previous, three next)", 22);
         o.options[i++] = new Option("Two months (one previous, one next)", 30);
+
+	o = $("#bnotif").get(0);
+	i = 0;
+	o.options[i++] = new Option("Never", -1);
+	for (j = 0; j <= 23; ++j) {
+		o.options[i++] = new Option("" + j + ":00", j);
+	}
 }
 
 
@@ -280,36 +287,12 @@ $(document).ready(function() {
 
 	window.onresize = window_resized;
 
-	var in_ok = 1;
-	var in_year = 0;
-	var in_month = 0;
-	var in_day = 0;
-	var in_hour = -1;
-	var in_span = 0;
-	var in_epoch = 0;
-
-	if ("y" in GET && "m" in GET && "d" in GET && "h" in GET && "s" in GET && "e" in GET) {
-		in_year = GET["y"];
-		in_month = GET["m"];
-		in_day = GET["d"];
-		in_hour = GET["h"];
-		in_span = GET["s"];
-		in_epoch = GET["e"];
-	} else {
-		in_ok = 0;
-	}
-
-	if (in_ok) {
-		// data via GET parameters
-		read_get_data(in_year, in_month, in_day, in_hour, in_span, in_epoch);
-		return;
-	}
-
 	$("#byear").change(changed_data);
 	$("#bmonth").change(changed_data);
 	$("#bday").change(changed_data);
 	$("#bhour").change(changed_data);
 	$("#bspan").change(changed_data);
+	$("#bnotif").change(changed_data);
 
 	read_storage();
 });
@@ -366,7 +349,7 @@ update = function()
 
 	--ulock;
 
-	update_urls();
+	//  update_urls();
 	write_storage();
 
 	return true;
