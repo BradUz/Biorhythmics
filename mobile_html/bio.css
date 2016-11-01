@@ -1,0 +1,32 @@
+body {
+	font-family: "Open Sans", "Droid Sans", "Myriad", "Lucida Grande", "Verdana", lucida, helvetica, sans-serif;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+table.book td {
+    padding: 0;
+}
+
+table.book span {
+    padding-left: 1.5em;
+    font-size: 90%;
+}
+
+div#throbber {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+div#throbber img {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+body {
+	background-image: url("bio_bg.png");
+	background-repeat: no-repeat;
+	background-position: center;
+}
