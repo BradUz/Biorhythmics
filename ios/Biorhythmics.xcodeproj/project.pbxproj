@@ -1,0 +1,351 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B93B47731DC7C4A6008B1A4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B47721DC7C4A6008B1A4A /* AppDelegate.swift */; };
+		B93B47751DC7C4A6008B1A4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B47741DC7C4A6008B1A4A /* ViewController.swift */; };
+		B93B47781DC7C4A6008B1A4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93B47761DC7C4A6008B1A4A /* Main.storyboard */; };
+		B93B477A1DC7C4A6008B1A4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B93B47791DC7C4A6008B1A4A /* Assets.xcassets */; };
+		B93B477D1DC7C4A6008B1A4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93B477B1DC7C4A6008B1A4A /* LaunchScreen.storyboard */; };
+		B93B478C1DC7C991008B1A4A /* bio_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B93B47851DC7C991008B1A4A /* bio_bg.png */; };
+		B93B478D1DC7C991008B1A4A /* bio.css in Resources */ = {isa = PBXBuildFile; fileRef = B93B47861DC7C991008B1A4A /* bio.css */; };
+		B93B478E1DC7C991008B1A4A /* bio.js in Resources */ = {isa = PBXBuildFile; fileRef = B93B47871DC7C991008B1A4A /* bio.js */; };
+		B93B478F1DC7C991008B1A4A /* flot in Resources */ = {isa = PBXBuildFile; fileRef = B93B47881DC7C991008B1A4A /* flot */; };
+		B93B47901DC7C991008B1A4A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = B93B47891DC7C991008B1A4A /* index.html */; };
+		B93B47921DC7C991008B1A4A /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = B93B478B1DC7C991008B1A4A /* jquery.js */; };
+		B93B47961DC7E711008B1A4A /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = B93B47951DC7E711008B1A4A /* main.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B93B476F1DC7C4A6008B1A4A /* Biorhythmics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Biorhythmics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B93B47721DC7C4A6008B1A4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B93B47741DC7C4A6008B1A4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B93B47771DC7C4A6008B1A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B93B47791DC7C4A6008B1A4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B93B477C1DC7C4A6008B1A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B93B477E1DC7C4A6008B1A4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B93B47851DC7C991008B1A4A /* bio_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bio_bg.png; sourceTree = "<group>"; };
+		B93B47861DC7C991008B1A4A /* bio.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bio.css; sourceTree = "<group>"; };
+		B93B47871DC7C991008B1A4A /* bio.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bio.js; sourceTree = "<group>"; };
+		B93B47881DC7C991008B1A4A /* flot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = flot; sourceTree = "<group>"; };
+		B93B47891DC7C991008B1A4A /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		B93B478B1DC7C991008B1A4A /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
+		B93B47951DC7E711008B1A4A /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = mobile_html/main.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B93B476C1DC7C4A6008B1A4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B93B47661DC7C4A6008B1A4A = {
+			isa = PBXGroup;
+			children = (
+				B93B47711DC7C4A6008B1A4A /* Biorhythmics */,
+				B93B47701DC7C4A6008B1A4A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B93B47701DC7C4A6008B1A4A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B93B476F1DC7C4A6008B1A4A /* Biorhythmics.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B93B47711DC7C4A6008B1A4A /* Biorhythmics */ = {
+			isa = PBXGroup;
+			children = (
+				B93B47951DC7E711008B1A4A /* main.js */,
+				B93B47841DC7C6A8008B1A4A /* html */,
+				B93B47721DC7C4A6008B1A4A /* AppDelegate.swift */,
+				B93B47741DC7C4A6008B1A4A /* ViewController.swift */,
+				B93B47761DC7C4A6008B1A4A /* Main.storyboard */,
+				B93B47791DC7C4A6008B1A4A /* Assets.xcassets */,
+				B93B477B1DC7C4A6008B1A4A /* LaunchScreen.storyboard */,
+				B93B477E1DC7C4A6008B1A4A /* Info.plist */,
+			);
+			path = Biorhythmics;
+			sourceTree = "<group>";
+		};
+		B93B47841DC7C6A8008B1A4A /* html */ = {
+			isa = PBXGroup;
+			children = (
+				B93B47851DC7C991008B1A4A /* bio_bg.png */,
+				B93B47861DC7C991008B1A4A /* bio.css */,
+				B93B47871DC7C991008B1A4A /* bio.js */,
+				B93B47881DC7C991008B1A4A /* flot */,
+				B93B47891DC7C991008B1A4A /* index.html */,
+				B93B478B1DC7C991008B1A4A /* jquery.js */,
+			);
+			name = html;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B93B476E1DC7C4A6008B1A4A /* Biorhythmics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B93B47811DC7C4A6008B1A4A /* Build configuration list for PBXNativeTarget "Biorhythmics" */;
+			buildPhases = (
+				B93B476B1DC7C4A6008B1A4A /* Sources */,
+				B93B476C1DC7C4A6008B1A4A /* Frameworks */,
+				B93B476D1DC7C4A6008B1A4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Biorhythmics;
+			productName = Biorhythmics;
+			productReference = B93B476F1DC7C4A6008B1A4A /* Biorhythmics.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B93B47671DC7C4A6008B1A4A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Elvis Pfutzenreuter";
+				TargetAttributes = {
+					B93B476E1DC7C4A6008B1A4A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = LUPFH54KMA;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = B93B476A1DC7C4A6008B1A4A /* Build configuration list for PBXProject "Biorhythmics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B93B47661DC7C4A6008B1A4A;
+			productRefGroup = B93B47701DC7C4A6008B1A4A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B93B476E1DC7C4A6008B1A4A /* Biorhythmics */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B93B476D1DC7C4A6008B1A4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B93B47921DC7C991008B1A4A /* jquery.js in Resources */,
+				B93B477D1DC7C4A6008B1A4A /* LaunchScreen.storyboard in Resources */,
+				B93B478E1DC7C991008B1A4A /* bio.js in Resources */,
+				B93B477A1DC7C4A6008B1A4A /* Assets.xcassets in Resources */,
+				B93B47781DC7C4A6008B1A4A /* Main.storyboard in Resources */,
+				B93B478F1DC7C991008B1A4A /* flot in Resources */,
+				B93B47901DC7C991008B1A4A /* index.html in Resources */,
+				B93B478D1DC7C991008B1A4A /* bio.css in Resources */,
+				B93B478C1DC7C991008B1A4A /* bio_bg.png in Resources */,
+				B93B47961DC7E711008B1A4A /* main.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B93B476B1DC7C4A6008B1A4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B93B47751DC7C4A6008B1A4A /* ViewController.swift in Sources */,
+				B93B47731DC7C4A6008B1A4A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B93B47761DC7C4A6008B1A4A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B93B47771DC7C4A6008B1A4A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B93B477B1DC7C4A6008B1A4A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B93B477C1DC7C4A6008B1A4A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B93B477F1DC7C4A6008B1A4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B93B47801DC7C4A6008B1A4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B93B47821DC7C4A6008B1A4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LUPFH54KMA;
+				INFOPLIST_FILE = Biorhythmics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.epxx.biorhythmics.Biorhythmics;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B93B47831DC7C4A6008B1A4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LUPFH54KMA;
+				INFOPLIST_FILE = Biorhythmics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.epxx.biorhythmics.Biorhythmics;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B93B476A1DC7C4A6008B1A4A /* Build configuration list for PBXProject "Biorhythmics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B93B477F1DC7C4A6008B1A4A /* Debug */,
+				B93B47801DC7C4A6008B1A4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B93B47811DC7C4A6008B1A4A /* Build configuration list for PBXNativeTarget "Biorhythmics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B93B47821DC7C4A6008B1A4A /* Debug */,
+				B93B47831DC7C4A6008B1A4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B93B47671DC7C4A6008B1A4A /* Project object */;
+}
