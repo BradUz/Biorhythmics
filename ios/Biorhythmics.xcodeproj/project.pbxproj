@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B919FA781DC818AB00EB96C6 /* bio_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B919FA721DC818AB00EB96C6 /* bio_bg.png */; };
+		B919FA791DC818AB00EB96C6 /* bio.css in Resources */ = {isa = PBXBuildFile; fileRef = B919FA731DC818AB00EB96C6 /* bio.css */; };
+		B919FA7A1DC818AB00EB96C6 /* bio.js in Resources */ = {isa = PBXBuildFile; fileRef = B919FA741DC818AB00EB96C6 /* bio.js */; };
+		B919FA7B1DC818AB00EB96C6 /* flot in Resources */ = {isa = PBXBuildFile; fileRef = B919FA751DC818AB00EB96C6 /* flot */; };
+		B919FA7C1DC818AB00EB96C6 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = B919FA761DC818AB00EB96C6 /* index.html */; };
+		B919FA7D1DC818AB00EB96C6 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = B919FA771DC818AB00EB96C6 /* jquery.js */; };
 		B93B47731DC7C4A6008B1A4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B47721DC7C4A6008B1A4A /* AppDelegate.swift */; };
 		B93B47751DC7C4A6008B1A4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B47741DC7C4A6008B1A4A /* ViewController.swift */; };
 		B93B47781DC7C4A6008B1A4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93B47761DC7C4A6008B1A4A /* Main.storyboard */; };
 		B93B477A1DC7C4A6008B1A4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B93B47791DC7C4A6008B1A4A /* Assets.xcassets */; };
 		B93B477D1DC7C4A6008B1A4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93B477B1DC7C4A6008B1A4A /* LaunchScreen.storyboard */; };
-		B93B478C1DC7C991008B1A4A /* bio_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B93B47851DC7C991008B1A4A /* bio_bg.png */; };
-		B93B478D1DC7C991008B1A4A /* bio.css in Resources */ = {isa = PBXBuildFile; fileRef = B93B47861DC7C991008B1A4A /* bio.css */; };
-		B93B478E1DC7C991008B1A4A /* bio.js in Resources */ = {isa = PBXBuildFile; fileRef = B93B47871DC7C991008B1A4A /* bio.js */; };
-		B93B478F1DC7C991008B1A4A /* flot in Resources */ = {isa = PBXBuildFile; fileRef = B93B47881DC7C991008B1A4A /* flot */; };
-		B93B47901DC7C991008B1A4A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = B93B47891DC7C991008B1A4A /* index.html */; };
-		B93B47921DC7C991008B1A4A /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = B93B478B1DC7C991008B1A4A /* jquery.js */; };
 		B93B47961DC7E711008B1A4A /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = B93B47951DC7E711008B1A4A /* main.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B919FA721DC818AB00EB96C6 /* bio_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bio_bg.png; path = ../../mobile_html/bio_bg.png; sourceTree = "<group>"; };
+		B919FA731DC818AB00EB96C6 /* bio.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = bio.css; path = ../../mobile_html/bio.css; sourceTree = "<group>"; };
+		B919FA741DC818AB00EB96C6 /* bio.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = bio.js; path = ../../mobile_html/bio.js; sourceTree = "<group>"; };
+		B919FA751DC818AB00EB96C6 /* flot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = flot; path = ../../mobile_html/flot; sourceTree = "<group>"; };
+		B919FA761DC818AB00EB96C6 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = ../../mobile_html/index.html; sourceTree = "<group>"; };
+		B919FA771DC818AB00EB96C6 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = jquery.js; path = ../../mobile_html/jquery.js; sourceTree = "<group>"; };
 		B93B476F1DC7C4A6008B1A4A /* Biorhythmics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Biorhythmics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93B47721DC7C4A6008B1A4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B93B47741DC7C4A6008B1A4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,12 +35,6 @@
 		B93B47791DC7C4A6008B1A4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B93B477C1DC7C4A6008B1A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B93B477E1DC7C4A6008B1A4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B93B47851DC7C991008B1A4A /* bio_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bio_bg.png; sourceTree = "<group>"; };
-		B93B47861DC7C991008B1A4A /* bio.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bio.css; sourceTree = "<group>"; };
-		B93B47871DC7C991008B1A4A /* bio.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bio.js; sourceTree = "<group>"; };
-		B93B47881DC7C991008B1A4A /* flot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = flot; sourceTree = "<group>"; };
-		B93B47891DC7C991008B1A4A /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		B93B478B1DC7C991008B1A4A /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		B93B47951DC7E711008B1A4A /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = mobile_html/main.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,12 +83,12 @@
 		B93B47841DC7C6A8008B1A4A /* html */ = {
 			isa = PBXGroup;
 			children = (
-				B93B47851DC7C991008B1A4A /* bio_bg.png */,
-				B93B47861DC7C991008B1A4A /* bio.css */,
-				B93B47871DC7C991008B1A4A /* bio.js */,
-				B93B47881DC7C991008B1A4A /* flot */,
-				B93B47891DC7C991008B1A4A /* index.html */,
-				B93B478B1DC7C991008B1A4A /* jquery.js */,
+				B919FA721DC818AB00EB96C6 /* bio_bg.png */,
+				B919FA731DC818AB00EB96C6 /* bio.css */,
+				B919FA741DC818AB00EB96C6 /* bio.js */,
+				B919FA751DC818AB00EB96C6 /* flot */,
+				B919FA761DC818AB00EB96C6 /* index.html */,
+				B919FA771DC818AB00EB96C6 /* jquery.js */,
 			);
 			name = html;
 			sourceTree = "<group>";
@@ -158,15 +158,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B93B47921DC7C991008B1A4A /* jquery.js in Resources */,
+				B919FA7D1DC818AB00EB96C6 /* jquery.js in Resources */,
+				B919FA791DC818AB00EB96C6 /* bio.css in Resources */,
+				B919FA7B1DC818AB00EB96C6 /* flot in Resources */,
 				B93B477D1DC7C4A6008B1A4A /* LaunchScreen.storyboard in Resources */,
-				B93B478E1DC7C991008B1A4A /* bio.js in Resources */,
+				B919FA7C1DC818AB00EB96C6 /* index.html in Resources */,
 				B93B477A1DC7C4A6008B1A4A /* Assets.xcassets in Resources */,
+				B919FA7A1DC818AB00EB96C6 /* bio.js in Resources */,
 				B93B47781DC7C4A6008B1A4A /* Main.storyboard in Resources */,
-				B93B478F1DC7C991008B1A4A /* flot in Resources */,
-				B93B47901DC7C991008B1A4A /* index.html in Resources */,
-				B93B478D1DC7C991008B1A4A /* bio.css in Resources */,
-				B93B478C1DC7C991008B1A4A /* bio_bg.png in Resources */,
+				B919FA781DC818AB00EB96C6 /* bio_bg.png in Resources */,
 				B93B47961DC7E711008B1A4A /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
