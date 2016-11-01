@@ -13,9 +13,9 @@ function jstest()
 
 function mylog(txt)
 {
-    if (AndroidGateway) {
+    if (typeof AndroidGateway !== "undefined") {
         AndroidGateway.JSlog(txt);
-    } else if (console) {
+    } else if (typeof console !== "undefined") {
         if (console.log) {
             console.log(txt);
         }

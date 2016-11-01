@@ -48,7 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             js = nil
         }
         
-        UIApplication.shared.setMinimumBackgroundFetchInterval(3600.0)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
