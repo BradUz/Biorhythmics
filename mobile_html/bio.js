@@ -211,7 +211,11 @@ write_storage = function()
 	}
 
 	localStorage.setItem("bio1", JSON.stringify({"blist": data}));
-    document.location = "blist:" + Base64.encode(JSON.stringify({"blist": data}));
+	if (AndroidGateway) {
+	    AndroidGateway.updateData(Base64.encode(JSON.stringify({"blist": data})));
+	} else {
+        document.location = "blist:" + Base64.encode(JSON.stringify({"blist": data}));
+    }
 };
 
 read_get_data = function(in_year, in_month, in_day, in_hour, in_span, in_epoch)

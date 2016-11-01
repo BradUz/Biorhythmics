@@ -13,7 +13,9 @@ function jstest()
 
 function mylog(txt)
 {
-    if (console) {
+    if (AndroidGateway) {
+        AndroidGateway.JSlog(txt);
+    } else if (console) {
         if (console.log) {
             console.log(txt);
         }
@@ -23,14 +25,14 @@ function mylog(txt)
 function determine_bio(storage)
 {
     if (storage.length <= 0) {
-        return ["Empty storage"];
+        return ["Empty storage", "", ""];
     }
     
     var s = Base64.decode(storage);
     var data = JSON.parse(s)["blist"];
     
     if (data[5] < 0 || data[5] > 23) {
-        return ["bg: notifications turned off"];
+        return ["bg: notifications turned off", "", ""];
     }
 
     var now = new Date();
@@ -42,7 +44,7 @@ function determine_bio(storage)
     mylog("bg: next notif is at " + notif_time);
 
     if (notif_time > now) {
-        return ["bg: not in time yet"];
+        return ["bg: not in time yet", "", ""];
     }
 		
     last_notif = now;
@@ -188,11 +190,14 @@ function determine_bio_in(birth, now)
 		return ["No events in biorhythm"];
 	}
 
+	// call toString() because Rhino uses ConsString objects to express concatenations
+	// and it could not be cast to String in Java layer
+
 	if (msgs.length === 1) {
-		return ["", msgs[0][1]];
+		return ["", msgs[0][1].toString()];
 	}
 
 	msgs.sort(function (a, b) { return a[0] - b[0] });
 
-	return ["", msgs[0][1], msgs[1][1]];
+	return ["", msgs[0][1].toString(), msgs[1][1].toString()];
 }

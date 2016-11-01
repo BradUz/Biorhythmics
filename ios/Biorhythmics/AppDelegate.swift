@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             js = nil
         }
         
-        UIApplication.shared.setMinimumBackgroundFetchInterval(60.0)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(3600.0)
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
@@ -60,11 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
     {
         NSLog("background execution")
-        if determine_bio() {
-            completionHandler(.newData)
-        } else {
-            completionHandler(.noData)
-        }
+        _ = determine_bio()
+        completionHandler(.newData)
     }
     
     func determine_bio() -> Bool
