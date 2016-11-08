@@ -211,7 +211,7 @@ write_storage = function()
 	}
 
 	localStorage.setItem("bio1", JSON.stringify({"blist": data}));
-	if (AndroidGateway) {
+	if (typeof AndroidGateway !== "undefined") {
 	    AndroidGateway.updateData(Base64.encode(JSON.stringify({"blist": data})));
 	} else {
         document.location = "blist:" + Base64.encode(JSON.stringify({"blist": data}));
