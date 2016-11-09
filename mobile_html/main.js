@@ -4,7 +4,6 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 
 var periods = [23, 28, 33, 0];
 var labels = ["Physical", "Emotional", "Intellectual", "Total"];
-var last_notif = new Date();
 
 function jstest()
 {
@@ -22,7 +21,7 @@ function mylog(txt)
     }
 }
 
-function determine_bio(storage)
+function determine_bio(storage, last_notif_unixtmstamp)
 {
     if (storage.length <= 0) {
         return ["Empty storage", "", ""];
@@ -37,7 +36,7 @@ function determine_bio(storage)
 
     var now = new Date();
     var notif_time = new Date(now.getFullYear(), now.getMonth(), now.getDate(), data[5], 0, 0, 0);
-    if (notif_time < last_notif) {
+    if (notif_time.getTime() < (last_notif_unixtmstamp * 1000)) {
         notif_time.setTime(notif_time.getTime() + 86400 * 1000);
     }
 
@@ -47,8 +46,6 @@ function determine_bio(storage)
         return ["bg: not in time yet", "", ""];
     }
 		
-    last_notif = now;
-	
     mylog("bg data: " + data);
     var birth = new Date(data[0], data[1] - 1, data[2], data[3], 0, 0, 0);
 

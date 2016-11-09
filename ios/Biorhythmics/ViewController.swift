@@ -23,14 +23,14 @@ class ViewController: UIViewController {
         html.loadRequest(URLRequest.init(url: url))
         
         let prefs = UserDefaults.standard
-        prefs.register(defaults: ["prefs" : ""])
+        prefs.register(defaults: ["prefs" : "", "last_notif": 0])
     }
     
     func webView(_ webView: UIWebView,
                  shouldStartLoadWithRequest request: NSURLRequest,
                  navigationType:UIWebViewNavigationType) -> Bool {
         let data = request.url?.absoluteString
-        // NSLog("Received load request")
+        NSLog("Received load request %@", data ?? "none")
         if data?.range(of: "blist:") != nil {
             NSLog("Received app data %@", data!)
             let cdata = data?.substring(

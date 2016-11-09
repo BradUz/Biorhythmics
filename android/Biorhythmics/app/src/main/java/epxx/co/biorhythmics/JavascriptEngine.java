@@ -91,8 +91,9 @@ public class JavascriptEngine extends Service {
     private void determine_bio() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         String data = sp.getString("bio1", "");
+        long last_notif = sp.getLong("last_notif", 0);
         Function f = (Function) scope.get("determine_bio", scope);
-        Object[] params = new Object[]{data};
+        Object[] params = new Object[]{data, last_notif};
         NativeArray jsret = (NativeArray) exec(f, params);
 
         Log.d(TAG, "Received array with " + jsret.getLength() + " items");
@@ -109,6 +110,9 @@ public class JavascriptEngine extends Service {
         if (! ret[0].isEmpty()) {
             Log.d(TAG, "Notice: " + ret[0]);
         } else {
+            SharedPreferences.Editor ed = sp.edit();
+            ed.putLong("last_notif", System.currentTimeMillis() / 1000L);
+            ed.apply();
             if (ret.length > 1) {
                 notif(ret[1], 1);
             }

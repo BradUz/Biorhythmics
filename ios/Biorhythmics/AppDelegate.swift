@@ -61,11 +61,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
     {
         NSLog("background execution")
-        if determine_bio() {
-            completionHandler(.newData)
-        } else {
-            completionHandler(.noData)
-        }
+        
+        let generated_notif = determine_bio();
+        
+        var request = URLRequest(url: URL(string: "https://node.epxx.co:34549/main.html")!)
+        request.httpMethod = "GET"
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {data, response, err in
+            NSLog("Entered the completionHandler")
+            if generated_notif {
+                completionHandler(.newData)
+            } else {
+                completionHandler(.noData)
+            }
+        }.resume()
     }
     
     func determine_bio() -> Bool
@@ -75,13 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if js != nil {
             let prefs = UserDefaults.standard
             let data = prefs.string(forKey: "prefs")!
+            var last_notif: Int = prefs.integer(forKey: "last_notif")
+            // NSLog("Prefs length: %d", data.lengthOfBytes(using: .utf8))
             let jsf = js!.objectForKeyedSubscript("determine_bio")
-            let msgs = jsf!.call(withArguments: [data])
+            let msgs = jsf!.call(withArguments: [data, last_notif])
+            
             if let amsgs = msgs!.toArray() as? [String] {
                 if amsgs.count > 0 {
                     if amsgs[0].characters.count > 0 {
-                        NSLog("Warning: %@", amsgs[0])
+                        NSLog("No notif - msg: %@", amsgs[0])
                     } else {
+                        last_notif = Int(NSDate().timeIntervalSince1970)
+                        prefs.set(last_notif, forKey: "last_notif")
                         ret = true;
                         
                         let content = UNMutableNotificationContent()
