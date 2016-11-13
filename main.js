@@ -6,6 +6,7 @@ const ipcMain = require('electron').ipcMain;
 let app_folder = path.join(app.getPath('home'), '.Biorhytmics');
 app.setPath("userData", app_folder);
 
+fs.mkdirSync(app_folder);
 let log_file = path.join(app_folder, 'console.log');
 let log = fs.openSync(log_file, 'a');
 
