@@ -16,39 +16,45 @@ import UserNotificationsUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var js: JSContext?
+    var jsc: JSContext?
 
+    func jscontext() -> JSContext?
+    {
+        if jsc == nil {
+            let jsmain = Bundle.main.path(forResource: "main", ofType: "js")
+            var jsscript = ""
+            do {
+                jsscript = try String(contentsOfFile: jsmain!, encoding: String.Encoding.utf8)
+            } catch (_) {
+                NSLog("Could not read main.js")
+            }
+            
+            jsc = JSContext()
+            
+            jsc!.exceptionHandler = { context, exception in
+                NSLog("JS Error: \(exception)")
+            }
+            
+            _ = jsc!.evaluateScript("var console = { log: function(message) { _consoleLog(message) } }")
+            let consoleLog: @convention(block) (String) -> Void = { message in
+                NSLog("console.log: %@", message)
+            }
+            jsc!.setObject(unsafeBitCast(consoleLog, to: AnyObject.self),
+                          forKeyedSubscript: "_consoleLog" as (NSCopying & NSObjectProtocol)!)
+            
+            jsc!.evaluateScript(jsscript)
+            if jsc!.objectForKeyedSubscript("determine_bio") == nil {
+                NSLog("Function not found in main.js")
+                jsc = nil
+            }
+        }
+        
+        return jsc
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let jsmain = Bundle.main.path(forResource: "main", ofType: "js")
-        var jsscript = ""
-        do {
-            jsscript = try String(contentsOfFile: jsmain!, encoding: String.Encoding.utf8)
-        } catch (_) {
-            NSLog("Could not read main.js")
-        }
-        
-        js = JSContext()
-        
-        js?.exceptionHandler = { context, exception in
-            NSLog("JS Error: \(exception)")
-        }
-        
-        _ = js?.evaluateScript("var console = { log: function(message) { _consoleLog(message) } }")
-        let consoleLog: @convention(block) (String) -> Void = { message in
-            NSLog("console.log: %@", message)
-        }
-        js?.setObject(unsafeBitCast(consoleLog, to: AnyObject.self),
-                      forKeyedSubscript: "_consoleLog" as (NSCopying & NSObjectProtocol)!)
-        
-        js!.evaluateScript(jsscript)
-        if js!.objectForKeyedSubscript("determine_bio") == nil {
-            NSLog("Function not found in main.js")
-            js = nil
-        }
-        
-        UIApplication.shared.setMinimumBackgroundFetchInterval(3600.0)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
@@ -62,9 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         NSLog("background execution")
         
-        let generated_notif = determine_bio();
+        let generated_notif = determine_bio()
         
-        var request = URLRequest(url: URL(string: "https://node.epxx.co:34549/main.html")!)
+        var request = URLRequest(url: URL(string: "https://node.epxx.co:34549/foobar.json")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         
@@ -81,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func determine_bio() -> Bool
     {
         var ret = false;
+        let js = jscontext()
         
         if js != nil {
             let prefs = UserDefaults.standard
