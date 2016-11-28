@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        application.setMinimumBackgroundFetchInterval(7200.0)
         
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
@@ -68,19 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         NSLog("background execution")
         
-        let generated_notif = determine_bio()
-        
-        var request = URLRequest(url: URL(string: "https://node.epxx.co:34549/foobar.json")!)
+        var request = URLRequest(url: URL(string: "https://node.epxx.co:34549/bio.json")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         
         session.dataTask(with: request) {data, response, err in
             NSLog("Entered the completionHandler")
-            if generated_notif {
-                completionHandler(.newData)
-            } else {
-                completionHandler(.noData)
-            }
+            _ = self.determine_bio()
+            completionHandler(.newData)
+            NSLog("Exited the completionHandler")
         }.resume()
     }
     
