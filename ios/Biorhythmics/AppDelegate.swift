@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        application.setMinimumBackgroundFetchInterval(7200.0)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         session.dataTask(with: request) {data, response, err in
             NSLog("Entered the completionHandler")
             _ = self.determine_bio()
-            completionHandler(.newData)
+            completionHandler(UIBackgroundFetchResult.newData)
             NSLog("Exited the completionHandler")
         }.resume()
     }
