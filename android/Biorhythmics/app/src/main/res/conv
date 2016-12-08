@@ -1,0 +1,16 @@
+#!/bin/bash -x
+
+BASE=../../../../../../icon.png
+CMD="convert $BASE -resize \${SIZE}! "
+
+SIZE='72x72'
+`eval echo $CMD` ./mipmap-hdpi/ic_launcher.png
+SIZE='48x48'
+`eval echo $CMD` ./mipmap-mdpi/ic_launcher.png
+SIZE='96x96'
+`eval echo $CMD` ./mipmap-xhdpi/ic_launcher.png
+SIZE='144x144'
+`eval echo $CMD` ./mipmap-xxhdpi/ic_launcher.png
+SIZE='192x192'
+`eval echo $CMD` ./mipmap-xxxhdpi/ic_launcher.png
+
