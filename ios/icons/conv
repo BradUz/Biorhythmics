@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BASE=../../icon.png
+convert $BASE -resize '512x512!' PNG32:icon512.png
+convert $BASE -resize '180x180!' PNG32:iconhi180.png
+convert $BASE -resize '120x120!' PNG32:iconhi120.png
+convert $BASE -resize '80x80!' PNG32:icon80.png
+convert $BASE -resize '60x60!' PNG32:icon60.png
+convert $BASE -resize '40x40!' PNG32:icon40.png
+convert $BASE -resize '87x87!' PNG32:icon87.png
+convert $BASE -resize '58x58!' PNG32:icon58.png
+convert $BASE -resize '29x29!' PNG32:icon29.png
