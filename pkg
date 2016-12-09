@@ -1,3 +1,0 @@
-#/bin/bash
-
-electron-packager . Biorhythmics --icon=icon.icns --prune --overwrite --platform=mas --out=~/Desktop/

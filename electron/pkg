@@ -1,0 +1,7 @@
+#/bin/bash -x
+
+rm -rf pack/
+
+electron-packager . Biorhythmics --icon=icon.icns --prune --overwrite --verbose --platform=mas --arch=x64 --app-version=1.00  --build-version=1.00.01 --app-bundle-id="co.epxx.Biorhythmics" --helper-bundle-id="co.epxx.Biorhythmics.helper" --out=pack/
+
+electron-osx-sign pack/Biorhythmics-mas-x64/Biorhythmics.app --entitlements="./parent.ent" --entitlements-inherit="./child.ent" --type=development --provisioning-profile="./provisioning.dev"
