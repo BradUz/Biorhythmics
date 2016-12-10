@@ -4,15 +4,14 @@ const fs = require('fs');
 const mkdirp = require('mkdirp');
 const ipcMain = require('electron').ipcMain;
 
-let app_folder = path.join(app.getPath('home'), '.Biorhytmics');
-app.setPath("userData", app_folder);
-
+let app_folder = app.getPath("userData");
 mkdirp.sync(app_folder);
 let log_file = path.join(app_folder, 'console.log');
 let log = fs.openSync(log_file, 'a');
 
 var mainWindow = null;
 
+/*
 var first_instance_on_reload = function () {
 	if (mainWindow) {
 		mainWindow.show();
@@ -22,6 +21,7 @@ var first_instance_on_reload = function () {
 if (app.makeSingleInstance(first_instance_on_reload)) {
 	app.quit();
 }
+*/
 
 var storage = require("electron-json-storage");
 var notify;
