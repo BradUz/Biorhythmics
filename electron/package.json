@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "electron-json-storage": "^2.0.1",
-    "electron-notify": "^0.1.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "node-notifier": "^4.6.1"
   }
 }

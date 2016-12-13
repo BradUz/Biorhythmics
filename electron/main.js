@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const ipcMain = require('electron').ipcMain;
+const notifier = require('node-notifier');
 
 let app_folder = app.getPath("userData");
 mkdirp.sync(app_folder);
@@ -24,7 +25,6 @@ if (app.makeSingleInstance(first_instance_on_reload)) {
 */
 
 var storage = require("electron-json-storage");
-var notify;
 
 let tray, ContextMenu;
 
@@ -53,11 +53,14 @@ function createWindow () {
 	});
 
 	mainWindow.on('close', function (event) {
+		/*
 		if (!app.isQuiting) {
 			event.preventDefault();
 			mainWindow.hide();
 		}
 		return false;
+		*/
+		return true;
 	});
 
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
@@ -306,38 +309,31 @@ function notif(txt, txt2)
 	var options;
 
 	if (txt2) {
-		options = {};
-
-		options.title = "Biorhythmics";
-		options.text = txt2;
-		options.onClickFunc = function (event) {
-			mainWindow.show();
-			event.closeNotification();
-		};
-	
-		notify.notify(options);
+		setTimeout(function () {
+			create_notif(txt2);
+		}, 60000);
 	}
-
-	options = {};
-
-	options.title = "Biorhythmics";
-	options.text = txt;
-	options.onClickFunc = function (event) {
-		mainWindow.show();
-		event.closeNotification();
-	};
-
-	notify.notify(options);
+	create_notif(txt);
 }
 
-function scheduleNotifs() {
-	notify = require('electron-notify');
-	notify.setConfig({
-		appIcon: path.join(__dirname, './icon-256.png'),
-		displayTime: 86400*1000/2-10,
-		maxVisibleNotifications: 2,
-		width: 350,
-		height: 80,
+function create_notif(txt)
+{
+	notifier.notify({
+		message: txt,
+		title: "Biorhythmics",
+		sound: false,
+		icon: path.join(__dirname, './icon-256.png'),
+		wait: true
+	}, function (err, response) {
+		mylog("Notification error: " + err + " " + response);
 	});
+}
+
+notifier.on('click', function (notifierObject, options) {
+	mylog("Notification clicked");
+	mainWindow.show();
+});
+
+function scheduleNotifs() {
 	setInterval(determine_bio, 60000);
 }
