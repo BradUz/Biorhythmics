@@ -14,11 +14,28 @@ var basedate;
 
 var storage = require("electron-json-storage");
 var ipcRenderer = require('electron').ipcRenderer;
+var path = require('path');
 
 function mylog(txt)
 {
 	ipcRenderer.send('mylog', txt);
 }
+
+ipcRenderer.on('mynotif', (event, message) => {
+	if (Notification.permission === "granted") {
+		var options = {
+			title: "Biorhythmics",
+			// icon: path.join(__dirname, './icon-256.png'),
+			body: message
+		};
+		var not = new Notification(options.title, options);
+		not.onclick = function () {
+			ipcRenderer.send('showwindow', "");
+		};
+	} else {
+		mylog("Notifications not granted");
+	}
+});
 
 // http://stackoverflow.com/questions/439463/how-to-get-get-and-post-variables-with-jquery
 function getQueryParams(qs) {

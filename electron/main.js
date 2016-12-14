@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const ipcMain = require('electron').ipcMain;
-const notifier = require('node-notifier');
 
 let app_folder = app.getPath("userData");
 mkdirp.sync(app_folder);
@@ -35,6 +34,10 @@ function mylog(txt)
 
 ipcMain.on('mylog', function(event, arg) {
 	mylog("(R) " + arg);
+});
+
+ipcMain.on('showwindow', function(event, arg) {
+	mainWindow.show();
 });
 
 function createWindow () {
@@ -318,21 +321,8 @@ function notif(txt, txt2)
 
 function create_notif(txt)
 {
-	notifier.notify({
-		message: txt,
-		title: "Biorhythmics",
-		sound: false,
-		icon: path.join(__dirname, './icon-256.png'),
-		wait: true
-	}, function (err, response) {
-		mylog("Notification error: " + err + " " + response);
-	});
+	mainWindow.send('mynotif', txt);
 }
-
-notifier.on('click', function (notifierObject, options) {
-	mylog("Notification clicked");
-	mainWindow.show();
-});
 
 function scheduleNotifs() {
 	setInterval(determine_bio, 60000);

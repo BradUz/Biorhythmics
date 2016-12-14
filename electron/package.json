@@ -13,12 +13,11 @@
   "author": "Elvis Pfutzenreuter",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.1",
+    "electron": "1.4.11",
     "electron-packager": "^8.1.0"
   },
   "dependencies": {
     "electron-json-storage": "^2.0.1",
-    "mkdirp": "^0.5.1",
-    "node-notifier": "^4.6.1"
+    "mkdirp": "^0.5.1"
   }
 }
