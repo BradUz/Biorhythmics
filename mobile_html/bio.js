@@ -362,6 +362,8 @@ update = function()
 	return true;
 };
 
+setInterval(update, 3600*1000);
+
 /* Biorhythm calculator 
  * Copyright (c) 2010 Elvis Pfutzenreuter
  * All rights reserved.
