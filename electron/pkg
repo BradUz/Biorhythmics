@@ -13,7 +13,7 @@ PROVISIO=bio
 
 rm -rf pack/
 
-electron-packager . "$NAME" --icon=icon.icns --prune --overwrite --verbose --platform=mas --arch=x64 --build-version=1.00.01 --app-bundle-id="co.epxx.$PACKAGE" --helper-bundle-id="co.epxx.$PACKAGE.helper" --out=pack/
+electron-packager . "$NAME" --icon=icon.icns --prune --overwrite --verbose --platform=mas --arch=x64 --build-version=1.00.02 --app-bundle-id="co.epxx.$PACKAGE" --helper-bundle-id="co.epxx.$PACKAGE.helper" --out=pack/
 
 SIGNPARAMS="--type=development --provisioning-profile=/Users/epx/${PROVISIO}.provisio"
 if [ $RELEASE = "1" ]; then
