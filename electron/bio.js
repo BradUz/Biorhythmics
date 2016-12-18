@@ -194,8 +194,10 @@ read_storage = function(engine)
 		}
 		data = contents["blist"];
 
-		if (data.length < storage_list.length) {
-			mylog("data length " + data.length);
+		if ((!data) ||
+				Object.getOwnPropertyNames([]).indexOf("length") < 0 ||
+				data.length < storage_list.length) {
+			mylog("Invalid data");
 			update();
 			return;
 		}

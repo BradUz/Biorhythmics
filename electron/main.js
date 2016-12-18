@@ -127,8 +127,11 @@ function determine_bio()
 			contents = {"blist": []};
 		}
 		var data = contents["blist"];
-		if (data.length < 6) {
-			mylog("bg: data length " + data.length);
+
+                if ((!data) ||
+                                Object.getOwnPropertyNames([]).indexOf("length") < 0 ||
+                                data.length < 6) {
+			mylog("invalid data");
 			return;
 		}
 		if (data[5] < 0 || data[5] > 23) {
