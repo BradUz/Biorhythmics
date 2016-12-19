@@ -1,0 +1,28 @@
+#/bin/bash -x
+
+RELEASE=0
+if [ "$1" = "release" ]; then
+	RELEASE=1
+fi
+echo Release $RELEASE
+read a
+
+NAME="Biorhythmics"
+PACKAGE="Biorhythmics"
+
+rm -rf pack/
+
+electron-packager . "$NAME" --icon=icon.icns --prune --overwrite --verbose --platform=darwin --build-version=1.00.03 --app-bundle-id="co.epxx.$PACKAGE" --helper-bundle-id="co.epxx.$PACKAGE.helper" --out=pack/
+
+SIGNPARAMS="--type=development"
+if [ $RELEASE = "1" ]; then
+	SIGNPARAMS=""
+fi
+
+# DEBUG=electron-osx-sign
+electron-osx-sign "pack/$NAME-darwin-x64/$NAME.app" `echo $SIGNPARAMS`
+
+if [ $RELEASE = "1" ]; then
+	electron-osx-flat "pack/$NAME-darwin-x64/$NAME.app" --verbose
+	mv "pack/$NAME-darwin-x64/$NAME.pkg" ~/Desktop/
+fi
