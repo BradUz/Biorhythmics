@@ -119,10 +119,10 @@ function plot_graph(data, span)
 			};
 
 	var p = $.plot($("#graph"), data, cfg);
-	p.getData()[0].lines.lineWidth = 4;
-	p.getData()[1].lines.lineWidth = 4;
-	p.getData()[2].lines.lineWidth = 4;
-	p.getData()[3].lines.lineWidth = 4;
+	p.getData()[0].lines.lineWidth = 3;
+	p.getData()[1].lines.lineWidth = 3;
+	p.getData()[2].lines.lineWidth = 3;
+	p.getData()[3].lines.lineWidth = 3;
 	// series: { lines: {show: true, lineWidth: 5}, shadowSize: 0 }
 	p.draw();
 }
@@ -271,9 +271,9 @@ function populate_controls()
 
 	o = $("#bspan").get(0);
 	i = 0;
-        o.options[i++] = new Option("Four weeks (two previous, two next)", 15);
-        o.options[i++] = new Option("Six weeks (three previous, three next)", 22);
-        o.options[i++] = new Option("Two months (one previous, one next)", 30);
+        o.options[i++] = new Option("Four weeks", 15);
+        o.options[i++] = new Option("Six weeks", 22);
+        o.options[i++] = new Option("Two months", 30);
 
 	o = $("#bnotif").get(0);
 	i = 0;

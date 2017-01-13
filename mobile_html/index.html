@@ -5,7 +5,7 @@
 <meta name="author" content="Elvis Pfützenreuter">
 <title>Biorhythmics</title>
 <link rel="stylesheet" type="text/css" href="bio.css">
-<meta name="viewport" content="width=500, user-scalable=no"/>
+<meta name="viewport" content="width=320, user-scalable=no"/>
 </head>
 
 <body>
@@ -14,30 +14,46 @@
 <script type="text/javascript" src="flot/jquery.flot.js" defer></script>
 <script type="text/javascript" src="bio.js" defer></script>
 
-<div id="labels" style="width: 500px; text-align: right; font-size: 80%">
+<div id="labels">
 <span style="color: #080">Physical</span>
 <span style="color: #F00">Emotional</span>
 <span style="color: #00F">Intellectual</span>
 <span style="color: #F80">Total</span>
+    &nbsp;&nbsp;
 </div>
-<div id="graph" style="width: 500px; height: 500px"></div>
+
+<div id="graph"></div>
+
+<div class=spacer></div>
+    <div class=spacer></div>
+
+<span class=item>
+Date of birth &nbsp;
+<select class=sel name="byear" id="byear"><option value="0">--</option></select>
+<select class=sel name="bmonth" id="bmonth"><option value="0">--</option></select>
+<select class=sel name="bday" id="bday"><option value="0">--</option></select>
+</span>
 <br>
-<br>
-Date of birth: 
-<select name="byear" id="byear"><option value="0">--</option></select>
-<select name="bmonth" id="bmonth"><option value="0">--</option></select>
-<select name="bday" id="bday"><option value="0">--</option></select>
-<br>
-<br>
-Hour of birth:
-<select name="bhour" id="bhour"><option value="0">--</option></select>
-<br>
-<br>
-Chart span:
-<select name="bspan" id="bspan"><option value="0">--</option></select>
-<br>
-<br>
-Notify me at:
-<select name="bnotif" id="bnotif"><option value="-1">Never</option></select> (aproximate)
+    <div class=spacer></div>
+
+<span class=item>
+Hour of birth &nbsp;
+<select class=sel name="bhour" id="bhour"><option value="0">--</option></select>
+</span>
+    <br>
+<div class=spacer></div>
+
+<span class=item>
+Chart span &nbsp;
+<select class=sel name="bspan" id="bspan"><option value="0">--</option></select>
+</span>
+    <br>
+<div class=spacer></div>
+
+<span class=item>
+Notify me at &nbsp;
+<select class=sel name="bnotif" id="bnotif"><option value="-1">Never</option></select>
+</span>
+
 </body>
 </html>

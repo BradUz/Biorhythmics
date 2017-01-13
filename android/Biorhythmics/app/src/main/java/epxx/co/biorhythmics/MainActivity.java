@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         html = (WebView) findViewById(R.id.html);
         html.getSettings().setJavaScriptEnabled(true);
-        html.setVerticalScrollBarEnabled(false);
+        // html.setVerticalScrollBarEnabled(false);
         html.addJavascriptInterface(this, "AndroidGateway");
         html.setWebViewClient(new HelloWebViewClient());
         html.setHorizontalScrollBarEnabled(false);

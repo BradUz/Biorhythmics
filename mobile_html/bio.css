@@ -2,31 +2,35 @@ body {
 	font-family: "Open Sans", "Droid Sans", "Myriad", "Lucida Grande", "Verdana", lucida, helvetica, sans-serif;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-}
-
-table.book td {
-    padding: 0;
-}
-
-table.book span {
-    padding-left: 1.5em;
-    font-size: 90%;
-}
-
-div#throbber {
-    padding: 0;
-    border: 0;
-    margin: 0;
-}
-
-div#throbber img {
-    padding: 0;
-    border: 0;
-    margin: 0;
-}
-
-body {
 	background-image: url("bio_bg.png");
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: center center;
+	background-size: contain;
+	font-size: 15px;
+}
+
+div#labels {
+     width: 100%;
+     text-align: right;
+     font-size: 11px;
+}
+
+div#graph {
+    width: 310px;
+    height: 280px;
+    margin: 0 auto;
+    font-size: 11px;
+}
+
+span.item {
+    padding-left: 1em;
+}
+
+div.spacer {
+    width: 100%;
+    height: 0.6em;
+}
+
+select.sel {
+    font-size: 18px;
 }
