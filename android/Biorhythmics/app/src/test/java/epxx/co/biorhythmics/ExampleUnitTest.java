@@ -1,4 +1,4 @@
-package epxx.co.biorhythmics;
+package co.epxx.biorhythmics;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package epxx.co.biorhythmics;
+package co.epxx.biorhythmics;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -14,6 +14,7 @@ import java.util.Date;
 
 public class AlarmHelper {
     static private AlarmManager manager;
+    // Expiry to avoid ancient versions running w/o updates out there
     static final Date expiry = new Date(2017 - 1900, 06, 01);
 
     static public boolean expired() {
@@ -30,7 +31,7 @@ public class AlarmHelper {
             return;
         }
 
-        Intent alarmIntent = new Intent(ctx, AlarmReceiver.class);
+        Intent alarmIntent = new Intent(ctx, co.epxx.biorhythmics.AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(ctx, 0, alarmIntent, 0);
         manager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
         int interval = 60 * 1000;

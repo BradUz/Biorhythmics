@@ -1,4 +1,4 @@
-package epxx.co.biorhythmics;
+package co.epxx.biorhythmics;
 
 import android.content.SharedPreferences;
 import android.os.Build;

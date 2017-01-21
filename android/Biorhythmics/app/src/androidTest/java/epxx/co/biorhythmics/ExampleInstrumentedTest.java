@@ -1,4 +1,4 @@
-package epxx.co.biorhythmics;
+package co.epxx.biorhythmics;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("epxx.co.biorhythmics", appContext.getPackageName());
+        assertEquals("co.epxx.biorhythmics", appContext.getPackageName());
     }
 }
