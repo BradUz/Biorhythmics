@@ -23,17 +23,17 @@ function mylog(txt)
 
 // http://stackoverflow.com/questions/439463/how-to-get-get-and-post-variables-with-jquery
 function getQueryParams(qs) {
-    qs = qs.split("+").join(" ");
-    var params = {},
-        tokens,
-        re = /[?&]?([^=]+)=([^&]*)/g;
+	qs = qs.split("+").join(" ");
+	var params = {},
+		tokens,
+		re = /[?&]?([^=]+)=([^&]*)/g;
 
-    while (tokens = re.exec(qs)) {
-        params[decodeURIComponent(tokens[1])]
-            = decodeURIComponent(tokens[2]);
-    }
+	while (tokens = re.exec(qs)) {
+		params[decodeURIComponent(tokens[1])]
+			= decodeURIComponent(tokens[2]);
+	}
 
-    return params;
+	return params;
 }
 
 function generate_data(birth, span)
@@ -47,6 +47,48 @@ function generate_data(birth, span)
 
 	var graph_data = [];
 	var lines = [];
+
+	var hell1a = new Date(birth);
+	var hell1b = new Date(birth);
+	var hell1c = new Date(birth);
+	hell1a.setFullYear(basedate.getFullYear());
+	hell1b.setFullYear(basedate.getFullYear() + 1);
+	hell1c.setFullYear(basedate.getFullYear() - 1);
+	var hell1 = hell1a;
+	if (Math.abs(basedate.getTime() - hell1b.getTime()) <
+				Math.abs(basedate.getTime() - hell1.getTime())) {
+		hell1 = hell1b;
+	}
+	if (Math.abs(basedate.getTime() - hell1c.getTime()) <
+				Math.abs(basedate.getTime() - hell1.getTime())) {
+		hell1 = hell1c;
+	}
+	var hell0 = new Date(hell1);
+	if (hell0.getMonth() === 0) {
+		hell0.setMonth(11);
+		hell0.setFullYear(hell0.getFullYear() - 1);
+	} else {
+		hell0.setMonth(hell0.getMonth() - 1);
+	}
+	mylog("Astral hell: " + hell0 + " .. " + hell1);
+
+	hell0 = hell0.getTime() - birth.getTime();
+	hell0 /= 1000;
+	hell0 /= 86400;
+	hell1 = hell1.getTime() - birth.getTime();
+	hell1 /= 1000;
+	hell1 /= 86400;
+
+	for(var i = -span; i <= span; i += 0.5) {
+		if ((days + i) > hell0 && (days + i) < hell1) {
+			if (i !== Math.round(i)) {
+				line = [[i, -0.5], [i, +0.5]];
+				graph_data.push({"color": "#ffff00",
+						"label": "",
+						"data": line});
+			}
+		}
+	}
 
 	for(var ti = 0; ti < 4; ++ti) {
 		var line = [];
@@ -173,7 +215,7 @@ var storage_was_read = false;
 
 read_storage = function(engine)
 {
-    storage_was_read = true;
+	storage_was_read = true;
 
 	var contents = localStorage.getItem("bio1");
 	if (! contents) {
@@ -207,11 +249,11 @@ read_storage = function(engine)
 
 write_storage = function()
 {
-    if (! storage_was_read) {
-        mylog("tried to write storage before first read");
-        return;
-    }
-    mylog("writing storage");
+	if (! storage_was_read) {
+		mylog("tried to write storage before first read");
+		return;
+	}
+	mylog("writing storage");
 	var data = [];
 
 	for (var i = 0; i < storage_list.length; ++i) {
@@ -221,10 +263,10 @@ write_storage = function()
 
 	localStorage.setItem("bio1", JSON.stringify({"blist": data}));
 	if (typeof AndroidGateway !== "undefined") {
-	    AndroidGateway.updateData(Base64.encode(JSON.stringify({"blist": data})));
+		AndroidGateway.updateData(Base64.encode(JSON.stringify({"blist": data})));
 	} else {
-        document.location = "blist:" + Base64.encode(JSON.stringify({"blist": data}));
-    }
+		document.location = "blist:" + Base64.encode(JSON.stringify({"blist": data}));
+	}
 };
 
 read_get_data = function(in_year, in_month, in_day, in_hour, in_span, in_epoch)
@@ -256,33 +298,33 @@ function populate_controls()
 	var y = d.getFullYear();
 	var j;
 	for (j = y - 150; j <= y; ++j) {
-            o.options[i++] = new Option(j, j);
-        }
+		o.options[i++] = new Option(j, j);
+	}
 	$("#byear").val(1970);
 
 	o = $("#bmonth").get(0);
 	i = 0;
 	for (j = 1; j <= 12; ++j) {
-            o.options[i++] = new Option(j, j);
-        }
+		o.options[i++] = new Option(j, j);
+	}
 
 	o = $("#bday").get(0);
 	i = 0;
 	for (j = 1; j <= 31; ++j) {
-            o.options[i++] = new Option(j, j);
-        }
+		o.options[i++] = new Option(j, j);
+	}
 
 	o = $("#bhour").get(0);
 	i = 0;
 	for (j = 0; j <= 23; ++j) {
-            o.options[i++] = new Option(j, j);
-        }
+		o.options[i++] = new Option(j, j);
+	}
 
 	o = $("#bspan").get(0);
 	i = 0;
-        o.options[i++] = new Option("Four weeks", 15);
-        o.options[i++] = new Option("Six weeks", 22);
-        o.options[i++] = new Option("Two months", 30);
+		o.options[i++] = new Option("Four weeks", 15);
+		o.options[i++] = new Option("Six weeks", 22);
+		o.options[i++] = new Option("Two months", 30);
 
 	o = $("#bnotif").get(0);
 	i = 0;
@@ -310,9 +352,9 @@ $(document).ready(function() {
 	$("#bspan").change(changed_data);
 	$("#bnotif").change(changed_data);
 
-    setTimeout(function () {
-        read_storage();
-    }, 100);
+	setTimeout(function () {
+		read_storage();
+	}, 100);
 });
 
 function changed_data()
@@ -335,7 +377,7 @@ function fix_date()
 	var o = new Date(y, m - 1, d, h, 0, 0, 0); // ok
 
 	if (y != o.getFullYear() || m != (o.getMonth() + 1) ||
-	    d != o.getDate() || h != o.getHours()) {
+		d != o.getDate() || h != o.getHours()) {
 		$("#byear").val(o.getFullYear());
 		$("#bmonth").val(o.getMonth() + 1);
 		$("#bday").val(o.getDate());
