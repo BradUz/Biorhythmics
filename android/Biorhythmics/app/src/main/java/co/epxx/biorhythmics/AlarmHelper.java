@@ -15,7 +15,7 @@ import java.util.Date;
 public class AlarmHelper {
     static private AlarmManager manager;
     // Expiry to avoid ancient versions running w/o updates out there
-    static final Date expiry = new Date(2017 - 1900, 06, 01);
+    static final Date expiry = new Date(2017 - 1900, 9, 1);
 
     static public boolean expired() {
         Date d = new Date();
@@ -34,7 +34,7 @@ public class AlarmHelper {
         Intent alarmIntent = new Intent(ctx, co.epxx.biorhythmics.AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(ctx, 0, alarmIntent, 0);
         manager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
-        int interval = 60 * 1000;
+        int interval = 600 * 1000;
         manager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 SystemClock.elapsedRealtime() + 1000,
                 interval, pendingIntent);

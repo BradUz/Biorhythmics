@@ -11,7 +11,7 @@ public class AlarmStartup extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context arg0, Intent arg1) {
-        Log.d(TAG, "boozzed");
+        Log.d(TAG, "bzzzed");
         Intent intent = new Intent(arg0, JavascriptEngine.class);
         arg0.startService(intent);
     }

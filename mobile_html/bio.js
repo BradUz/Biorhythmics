@@ -169,8 +169,12 @@ update_urls = function()
 }
 */
 
+var storage_was_read = false;
+
 read_storage = function(engine)
 {
+    storage_was_read = true;
+
 	var contents = localStorage.getItem("bio1");
 	if (! contents) {
 		contents = {"blist": []};
@@ -203,6 +207,11 @@ read_storage = function(engine)
 
 write_storage = function()
 {
+    if (! storage_was_read) {
+        mylog("tried to write storage before first read");
+        return;
+    }
+    mylog("writing storage");
 	var data = [];
 
 	for (var i = 0; i < storage_list.length; ++i) {
@@ -301,7 +310,9 @@ $(document).ready(function() {
 	$("#bspan").change(changed_data);
 	$("#bnotif").change(changed_data);
 
-	read_storage();
+    setTimeout(function () {
+        read_storage();
+    }, 100);
 });
 
 function changed_data()
