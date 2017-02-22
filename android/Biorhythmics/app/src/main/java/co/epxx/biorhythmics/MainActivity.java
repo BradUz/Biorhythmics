@@ -3,6 +3,7 @@ package co.epxx.biorhythmics;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,10 +13,21 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     WebView html;
     private FirebaseAnalytics mFirebaseAnalytics;
+    Handler h = new Handler();
+    InterstitialAd mInterstitialAd;
+
     public final String TAG = "Biorhythmics";
+    boolean on_screen = false;
 
     private class HelloWebViewClient extends WebViewClient {
     }
@@ -33,13 +45,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (AlarmHelper.expired()) {
-            Log.d(TAG, "expired beta");
-            finish();
-            return;
-        }
-
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-8045343011312408/8701091346");
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+        requestNewInterstitial();
+        h.postDelayed(new Runnable() {
+            public void run() {
+                checkAd();
+            }
+        }, 1000);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -65,5 +85,65 @@ public class MainActivity extends AppCompatActivity {
         html.loadUrl("file:///android_asset/index.html");
 
         AlarmHelper.start(this);
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+    }
+
+    private void checkAd()
+    {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        long now = (new Date()).getTime();
+        long lastad = sp.getLong("lastad", now);
+        long to = 600000;
+        long diff = now - lastad;
+        boolean due = diff > (24*60*60*1000);
+        boolean weird = diff < (-24*60*60*1000) || diff > (7*24*60*60*1000);
+
+        if (weird) {
+            SharedPreferences.Editor ed = sp.edit();
+            ed.putLong("lastad", now);
+            ed.commit();
+        } else {
+            if (due) {
+                to = 1000;
+            }
+
+            if (mInterstitialAd.isLoaded() && on_screen && due) {
+                showAd();
+                SharedPreferences.Editor ed = sp.edit();
+                ed.putLong("lastad", now);
+                ed.commit();
+            }
+        }
+
+        h.postDelayed(new Runnable() {
+            public void run() {
+                checkAd();
+            }
+        }, to);
+    }
+
+    private void showAd() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        on_screen = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        on_screen = false;
     }
 }
