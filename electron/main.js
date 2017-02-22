@@ -174,6 +174,7 @@ function determine_bio_in(birth, now)
 	var dm1b = [0, 0, 0, 0];
 	var dd0b = [0, 0, 0, 0];
 	var dd1b = [0, 0, 0, 0];
+	var msgs = [];
 
 	var days = now.getTime() - birth.getTime();
 	days /= 1000;
@@ -182,7 +183,39 @@ function determine_bio_in(birth, now)
 	mylog("Base: " + now);
 	mylog("Birth: " + birth);
 	mylog("Number of days: " + days);
-		
+
+	var hell1a = new Date(birth);
+	var hell1b = new Date(birth);
+	var hell1c = new Date(birth);
+	hell1a.setFullYear(now.getFullYear());
+	hell1b.setFullYear(now.getFullYear() + 1);
+	hell1c.setFullYear(now.getFullYear() - 1);
+	var hell1 = hell1a;
+	if (Math.abs(now.getTime() - hell1b.getTime()) <
+			Math.abs(now.getTime() - hell1.getTime())) {
+		hell1 = hell1b;
+	}
+	if (Math.abs(now.getTime() - hell1c.getTime()) <
+    			Math.abs(now.getTime() - hell1.getTime())) {
+		hell1 = hell1c;
+	}
+	var hell0 = new Date(hell1);
+	if (hell0.getMonth() === 0) {
+		hell0.setMonth(11);
+		hell0.setFullYear(hell0.getFullYear() - 1);
+	} else {
+		hell0.setMonth(hell0.getMonth() - 1);
+	}
+	mylog("Astral hell: " + hell0 + " .. " + hell1);
+
+	if (Math.abs(hell0.getTime() - now.getTime()) < 24*60*60*1000) {
+		msgs.push([0, "Important! You are entering the Astral Hell period (30 days before your birthday)."]);
+	}
+
+	if (Math.abs(hell1.getTime() - now.getTime()) < 24*60*60*1000) {
+		msgs.push([0, "You are exiting the Astral Hell period. By the way, happy birthday!"]);
+	}
+
 	for (var i = 0; i < 3; ++i) {
 		var h = Math.sin(2.0 * Math.PI * days / periods[i]);
 		d0b[i] = h;
@@ -205,8 +238,6 @@ function determine_bio_in(birth, now)
 
 		mylog("item " + i + " x-1: " + dm1b[i] + " x: " + d0b[i] + " x+1: " + d1b[i] + " derivatives " + dd0b[i] + " " + dd1b[i]);
 	}
-
-	var msgs = [];
 
 	var critical = [];
 	var critical_tomorrow = [];
