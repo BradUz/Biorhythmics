@@ -14,6 +14,7 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
     WebView html;
+    private FirebaseAnalytics mFirebaseAnalytics;
     public final String TAG = "Biorhythmics";
 
     private class HelloWebViewClient extends WebViewClient {
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "514870797397",
+    "firebase_url": "https://non-rpn-calculators.firebaseio.com",
+    "project_id": "non-rpn-calculators",
+    "storage_bucket": "non-rpn-calculators.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514870797397:android:4b3ab272a890b402",
+        "android_client_info": {
+          "package_name": "co.epxx.photofriend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514870797397-27e4stkmukikp69ltp4aphi676p2b9db.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEsMXS3A1BRVjq8Z8QhT9qy5SiGaWHHYw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514870797397:android:05cca52f7055344f",
+        "android_client_info": {
+          "package_name": "co.epxx.biorhythmics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514870797397-27e4stkmukikp69ltp4aphi676p2b9db.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEsMXS3A1BRVjq8Z8QhT9qy5SiGaWHHYw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
