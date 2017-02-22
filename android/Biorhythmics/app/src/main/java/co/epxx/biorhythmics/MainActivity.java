@@ -97,29 +97,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkAd()
     {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        Log.d(TAG, "checkAd");
+        long to = 60000;
         long now = (new Date()).getTime();
-        long lastad = sp.getLong("lastad", now);
-        long to = 600000;
-        long diff = now - lastad;
-        boolean due = diff > (24*60*60*1000);
-        boolean weird = diff < (-24*60*60*1000) || diff > (7*24*60*60*1000);
 
-        if (weird) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        long lastad = sp.getLong("lastad", now);
+        if (lastad == now) {
+            Log.d(TAG, "checkAd: first run");
+            SharedPreferences.Editor ed = sp.edit();
+            ed.putLong("lastad", now);
+            ed.apply();
+        }
+
+        long next = lastad + 24*60*60*1000;
+        boolean due = (now >= next) || (next > (now + 2*24*60*60*1000));
+
+        if (due) {
+            Log.d(TAG, "checkAd: due");
+            to = 1000;
+        } else {
+            to = next - now + 1000;
+        }
+
+        if (mInterstitialAd.isLoaded() && on_screen && due) {
+            Log.d(TAG, "checkAd: showing");
+            showAd();
             SharedPreferences.Editor ed = sp.edit();
             ed.putLong("lastad", now);
             ed.commit();
-        } else {
-            if (due) {
-                to = 1000;
-            }
-
-            if (mInterstitialAd.isLoaded() && on_screen && due) {
-                showAd();
-                SharedPreferences.Editor ed = sp.edit();
-                ed.putLong("lastad", now);
-                ed.commit();
-            }
         }
 
         h.postDelayed(new Runnable() {
@@ -138,12 +144,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "on screen");
         on_screen = true;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(TAG, "off screen");
         on_screen = false;
     }
 }
