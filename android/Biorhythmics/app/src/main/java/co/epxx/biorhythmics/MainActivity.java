@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -20,9 +21,10 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Date;
 
+import io.fabric.sdk.android.Fabric;
+
 public class MainActivity extends AppCompatActivity {
     WebView html;
-    private FirebaseAnalytics mFirebaseAnalytics;
     Handler h = new Handler();
     InterstitialAd mInterstitialAd;
 
@@ -44,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
 
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-8045343011312408/8701091346");
         mInterstitialAd.setAdListener(new AdListener() {

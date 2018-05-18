@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "co.epxx.biorhythmics"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 11
-        versionName "1.1"
+        versionCode 12
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,16 +26,13 @@ android {
 }
 
 dependencies {
-    compile files('libs/js.jar')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.+'
-    compile 'com.android.support:support-v4:25.+'
-    compile 'com.android.support:design:25.+'
-    compile 'com.google.firebase:firebase-ads:10.0.1'
-    compile 'com.google.firebase:firebase-core:10.0.1'
-    testCompile 'junit:junit:4.12'
+    implementation files('libs/js.jar')
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.android.support:support-v4:25.4.0'
+    implementation 'com.android.support:design:25.4.0'
+    implementation 'com.google.firebase:firebase-core:11.4.2'
+    implementation 'com.google.firebase:firebase-ads:11.4.2'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

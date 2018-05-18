@@ -3,3 +3,7 @@ Biorhythmics-darwin-x64
 build/
 .DS_Store
 xcuserdata/
+android/Biorhythmics/app/fabric.properties
+android/Biorhythmics/.idea/caches/
+android/Biorhythmics/.idea/codeStyles/
+electron/pack/
